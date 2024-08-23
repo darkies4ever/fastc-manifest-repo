@@ -33,7 +33,7 @@ ingress:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
     alb.ingress.kubernetes.io/healthcheck-path: /
-    alb.ingress.kubernetes.io/subnets: subnet-0be886d2b66cb612e, 	subnet-0be30742607e390a8
+    alb.ingress.kubernetes.io/subnets: subnet-08fa7f01ce73e4f53, 	subnet-03888f7e7928f2176
   ingressRule:
     - http:
         paths:
