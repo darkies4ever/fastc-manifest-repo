@@ -9,7 +9,7 @@ image:
   repository: 039612850376.dkr.ecr.ap-northeast-2.amazonaws.com/chatrepo
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "13d73"
+  tag: "cf922"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
