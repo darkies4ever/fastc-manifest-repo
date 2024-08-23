@@ -4,27 +4,21 @@
 
 appName: "chathelm"
 replicaCount: 2
-
 image:
   # repository: <AWS ACCOUNT ID>.dkr.ecr.ap-northeast-2.amazonaws.com/fastc-app
   repository: 039612850376.dkr.ecr.ap-northeast-2.amazonaws.com/chatrepo
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
-
+  tag: "13d73"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
 podAnnotations: {}
-
 maxSurge: 34%
 maxUnavailable: 0%
-
 service:
   type: ClusterIP
   port: 8501
-
 ingress:
   annotations:
     kubernetes.io/ingress.class: alb
@@ -33,7 +27,7 @@ ingress:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
     alb.ingress.kubernetes.io/healthcheck-path: /
-    alb.ingress.kubernetes.io/subnets: subnet-08fa7f01ce73e4f53, 	subnet-03888f7e7928f2176
+    alb.ingress.kubernetes.io/subnets: "subnet-08fa7f01ce73e4f53, \tsubnet-03888f7e7928f2176"
   ingressRule:
     - http:
         paths:
@@ -44,18 +38,17 @@ ingress:
                 name: chathelm
                 port:
                   number: 8501
-
 resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+# We usually recommend not to specify default resources and to leave this as a conscious
+# choice for the user. This also increases chances charts run on environments with little
+# resources, such as Minikube. If you do want to specify resources, uncomment the following
+# lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+# limits:
+#   cpu: 100m
+#   memory: 128Mi
+# requests:
+#   cpu: 100m
+#   memory: 128Mi
 
 autoscaling:
   enabled: false
@@ -63,14 +56,11 @@ autoscaling:
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
-
 # nodeSelector:
 #   nodeType: service-2023
-
 tolerations:
   - key: service
     operator: "Equal"
     value: "true"
     effect: "NoSchedule"
-
 affinity: {}
